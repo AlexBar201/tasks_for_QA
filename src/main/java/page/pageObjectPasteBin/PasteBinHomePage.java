@@ -3,6 +3,7 @@ package page.pageObjectPasteBin;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,7 +15,7 @@ public class PasteBinHomePage {
     private static final By TEXT_AREA = By.id("postform-text");
     private static final By SELECT_EXPIRATION = By.id("select2-postform-expiration-container");
     private static final By POST_FORM_NAME_INPUT = By.id("postform-name");
-    private static final By TEN_MINUTES = By.xpath("//ul[@id='select2-postform-expiration-results' and @aria-hidden='false']//li[contains(@id, 'select2-postform-expiration-result') and contains(text(), '10M')]");
+    private static final By TEN_MINUTES = By.xpath("//ul[@id='select2-postform-expiration-results' and @aria-hidden='false']//li[@class='select2-results__option select2-results__option--highlighted']");
     private static final By CREATE_NEW_PASTE_BUTTON = By.xpath(".//div[@class='form-group form-btn-container']/button[@class='btn -big']");
 
 //Переменные нужные для выполнения задания
@@ -58,9 +59,9 @@ public class PasteBinHomePage {
 
 //Метод для скролла
     public void scrollToWebElement(By element){
-
+        WebElement elem = driver.findElement(element);
 //////Листаем страницу до нужного элемента
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", elem);
 
     }
 
